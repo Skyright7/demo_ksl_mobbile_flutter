@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bruno/bruno.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,6 +62,40 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  var actionKey = GlobalKey();
+
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Busy Map',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Scanner',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Message',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 4: User',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -70,10 +105,27 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      appBar: BrnAppBar(
+        title: '标题名称',
+        leading: BrnDoubleLeading(
+          first: BrnBackLeading(),
+          second: BrnBackLeading(
+            child: Image.asset(
+              '/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/images.jpeg',
+              scale: 3.0,
+              height: 20,
+              width: 20,
+            ),
+          ),
+        ),
+        actions: BrnTextAction(
+          '弹出菜单',
+          key: actionKey,
+          iconPressed: () {
+            BrnPopupListWindow.showPopListWindow(context, actionKey,
+                offset: 10, data: ["买卖买卖", "租赁租"]);
+          },
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -109,7 +161,40 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
+    bottomNavigationBar: BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+          backgroundColor: Color.fromARGB(255, 10, 48, 78),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.map),
+          label: 'Busy Map',
+          backgroundColor: Color.fromARGB(255, 10, 48, 78),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.qr_code_scanner),
+          label: 'Scanner',
+          backgroundColor: Color.fromARGB(255, 10, 48, 78),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.message),
+          label: 'Message',
+          backgroundColor: Color.fromARGB(255, 10, 48, 78),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          label: 'User',
+          backgroundColor: Color.fromARGB(255, 10, 48, 78),
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.amber[800],
+      onTap: _onItemTapped,
+    ),
     );
   }
 }
