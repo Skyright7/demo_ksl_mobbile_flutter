@@ -6,19 +6,22 @@ import 'package:demo_ksl_mobbile/widgets/Swiper.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title, required this.myNavIndex});
 
   final String title;
 
+  final int myNavIndex;
+
   @override
-  State<MyHomePage> createState() => _MyHomePageState(title);
+  State<MyHomePage> createState() => _MyHomePageState(title,myNavIndex);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
 
   final String title;
+  final int myNavIndex;
 
-  _MyHomePageState(this.title);
+  _MyHomePageState(this.title,this.myNavIndex);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-      bottomNavigationBar: MyNavBar(),
+      bottomNavigationBar: MyNavBar(myNavIndex: myNavIndex,),
     );
   }
 }

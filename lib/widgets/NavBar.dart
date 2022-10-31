@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class MyNavBar extends StatefulWidget {
-  const MyNavBar({Key? key}) : super(key: key);
+  const MyNavBar({Key? key, required this.myNavIndex}) : super(key: key);
+
+  final int myNavIndex;
 
   @override
-  State<MyNavBar> createState() => _MyNavBarState();
+  State<MyNavBar> createState() => _MyNavBarState(myNavIndex);
 }
 
 class _MyNavBarState extends State<MyNavBar> {
-
-  int _selectedIndex = 0;
+  int _selectedIndex;
+  _MyNavBarState(this._selectedIndex);
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -36,9 +38,28 @@ class _MyNavBarState extends State<MyNavBar> {
   ];
 
   void _onItemTapped(int index) {
+    var preIndex = _selectedIndex;
     setState(() {
       _selectedIndex = index;
     });
+    if(preIndex != _selectedIndex){
+      if(_selectedIndex == 0){
+        Navigator.pushNamed(context, "/",arguments:{'title': 'Flutter Demo Home Page',"myNavIndex":0});
+      }
+      else if(_selectedIndex == 1){
+        Navigator.pushNamed(context, "/busyMap",arguments:{'title': "Busy Page","navIndex":1});
+      }
+      else if(_selectedIndex == 2){
+
+      }
+      else if(_selectedIndex == 3){
+
+      }
+      else{
+
+      }
+
+    }
   }
 
 

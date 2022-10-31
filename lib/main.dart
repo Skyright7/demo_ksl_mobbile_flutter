@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/BusyMapPage.dart';
 import 'package:flutter/material.dart';
 import 'routes/MyHomePage.dart';
 
@@ -25,7 +26,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page',myNavIndex: 0,),
+      routes: {
+        '/busyMap': (BuildContext context) => MyBusyPage(title: "Busy Page", navIndex: 1,),
+      },
     );
   }
 }
