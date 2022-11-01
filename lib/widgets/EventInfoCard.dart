@@ -18,13 +18,15 @@ class _MyEventInfoCardState extends State<MyEventInfoCard> {
               child: Image.network("https://via.placeholder.com/350x150",fit: BoxFit.fill,width: 80,
                 height: 80,),
             ),
-            Container(
-              child: Column(
-                children: [
-                  Text("This is a header."),
-                  Text("This is a short cut of main info..."),
-                  Text("Hold on: 2022/10/30"),
-                ],
+            Expanded(
+              child: Container(
+                child: Column(
+                  children: [
+                    Text("This is a header."),
+                    Text("This is a short cut of main info..."),
+                    Text("Hold on: 2022/10/30"),
+                  ],
+                ),
               ),
             ),
             Container(

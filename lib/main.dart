@@ -1,4 +1,5 @@
 import 'package:demo_ksl_mobbile/routes/BusyMapPage.dart';
+import 'package:demo_ksl_mobbile/routes/MessagePage.dart';
 import 'package:flutter/material.dart';
 import 'routes/MyHomePage.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter Demo Home Page',myNavIndex: 0,),
       routes: {
         '/busyMap': (BuildContext context) => MyBusyPage(title: "Busy Page", navIndex: 1,),
+        '/messagePage':(BuildContext context) => MyMessagePage(title: "Message Page", myNavIndex: 3,),
       },
     );
   }

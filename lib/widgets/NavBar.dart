@@ -53,7 +53,7 @@ class _MyNavBarState extends State<MyNavBar> {
 
       }
       else if(_selectedIndex == 3){
-
+        Navigator.pushNamed(context, "/messagePage",arguments:{'title': "Message Page","myNavIndex":3});
       }
       else{
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bruno/bruno.dart';
 
+//后续通过第三方做更好的动画性质定制比如 Fl_chart
+
 class MyBusyMap extends StatelessWidget {
   const MyBusyMap({Key? key}) : super(key: key);
 
