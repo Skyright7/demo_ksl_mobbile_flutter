@@ -50,13 +50,13 @@ class _MyNavBarState extends State<MyNavBar> {
         Navigator.pushNamed(context, "/busyMap",arguments:{'title': "Busy Page","navIndex":1});
       }
       else if(_selectedIndex == 2){
-
+        Navigator.pushNamed(context, "/scanner",arguments:{'title': "Scanner Page","myNavIndex":2});
       }
       else if(_selectedIndex == 3){
         Navigator.pushNamed(context, "/messagePage",arguments:{'title': "Message Page","myNavIndex":3});
       }
-      else{
-
+      else if(_selectedIndex == 4){
+        Navigator.pushNamed(context, "/userPage",arguments:{'title': "User Page","myNavIndex":4});
       }
 
     }
