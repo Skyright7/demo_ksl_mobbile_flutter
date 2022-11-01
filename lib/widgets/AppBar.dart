@@ -13,12 +13,13 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget{
       automaticallyImplyLeading: true,
       actions: BrnIconAction(
         iconPressed: () {},
-        child: Image.asset(
-          '/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/images.jpeg',
-          scale: 3.0,
-          height: 20,
-          width: 20,
-        ),
+        child: Icon(Icons.account_circle,color: Color.fromARGB(255, 10, 48, 78),),
+        // child: Image.asset(
+        //   '/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/images.jpeg',
+        //   scale: 3.0,
+        //   height: 20,
+        //   width: 20,
+        // ),
       ),
     );
   }

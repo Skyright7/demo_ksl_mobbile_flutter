@@ -32,61 +32,36 @@ class _MyHomePageState extends State<MyHomePage> {
       body:Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Expanded(
-                child:Container(
-                  width: 400,
-                  height: 400,
+             Container(
+                  width: 300,
+                  height: 200,
                   child: MySwiper(),
-                )
-            ),
-            Center(
-              child: ElevatedButton.icon(
-                onPressed:() {},
-                icon: Icon(Icons.book_outlined),
-                label: Text("Booking a seat!"),
+                ),
+            Container(
+              child: Center(
+                child: ElevatedButton.icon(
+                  onPressed:() {},
+                  icon: Icon(Icons.book_outlined),
+                  label: Text("Booking a seat!"),
+                ),
               ),
             ),
-            const Center(
-              child: MySearch(),
-            ),
-            SizedBox(
-              height: 400,
-              child: ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                children: [
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      child: MyEventInfoCard(),
-                    ),
-                  ),
-                ],
+            Container(
+              child: Center(
+                child: MySearch(),
               ),
+            ),
+            Expanded(
+                child: SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                      itemCount: 10,
+                      prototypeItem: MyEventInfoCard(),
+                      itemBuilder: (context, index){
+                        return MyEventInfoCard();
+                      },
+                  ),
+                ),
             ),
           ],
         ),
