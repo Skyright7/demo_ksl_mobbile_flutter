@@ -23,7 +23,7 @@ class _MyMessageCardState extends State<MyMessageCard> {
                 child: Container(
                   child: Column(
                     children: [
-                      Text("This is the header"),
+                      Text("This is the header",style: TextStyle(fontSize: 25)),
                       Text("To: who..."),
                       Text("Message deatail shortcut..."),
                     ],

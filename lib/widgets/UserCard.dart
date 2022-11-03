@@ -39,7 +39,7 @@ class _MyUserCardState extends State<MyUserCard> {
                 child: Container(
                   child: Column(
                     children: [
-                      Text(userName),
+                      Expanded(child: Text(userName,style: TextStyle(fontSize: 25),),),
                       Text(userShortInfo),
                       Text(userTitle),
                     ],

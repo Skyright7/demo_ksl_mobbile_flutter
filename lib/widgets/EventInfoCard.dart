@@ -22,7 +22,7 @@ class _MyEventInfoCardState extends State<MyEventInfoCard> {
               child: Container(
                 child: Column(
                   children: [
-                    Text("This is a header."),
+                    Text("This is a header.",style: TextStyle(fontSize: 25)),
                     Text("This is a short cut of main info..."),
                     Text("Hold on: 2022/10/30"),
                   ],
