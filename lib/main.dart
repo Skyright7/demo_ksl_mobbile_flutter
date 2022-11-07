@@ -1,6 +1,10 @@
+import 'package:demo_ksl_mobbile/routes/BookingASeatPage1.dart';
+import 'package:demo_ksl_mobbile/routes/BookingASeatPage2.dart';
+import 'package:demo_ksl_mobbile/routes/BookingASeatPage3.dart';
 import 'package:demo_ksl_mobbile/routes/BusyMapPage.dart';
 import 'package:demo_ksl_mobbile/routes/MessagePage.dart';
 import 'package:demo_ksl_mobbile/routes/ScannerPage.dart';
+import 'package:demo_ksl_mobbile/routes/SuccessPage.dart';
 import 'package:demo_ksl_mobbile/routes/UserInfoPage.dart';
 import 'package:flutter/material.dart';
 import 'routes/MyHomePage.dart';
@@ -35,6 +39,10 @@ class MyApp extends StatelessWidget {
         '/scanner': (BuildContext context) => MyScannerPage(title: "Scanner Page", myNavIndex: 2,),
         '/messagePage':(BuildContext context) => MyMessagePage(title: "Message Page", myNavIndex: 3,),
         '/userPage':(BuildContext context) => MyUserInfoPage(title: "User Page", myNavIndex: 4,),
+        '/BookingASeat/1':(BuildContext context) => BookingSeatStepOnePage(title: "Step One"),
+        '/BookingASeat/2':(BuildContext context) => BookingSeatStepTwoPage(title: "Step Two"),
+        '/BookingASeat/3':(BuildContext context) => BookingSeatStepThreePage(title: "Step Three"),
+        '/success':(BuildContext context) => SuccessPage(title: "Booking Suceessful!"),
       },
     );
   }

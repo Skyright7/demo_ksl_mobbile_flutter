@@ -40,7 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               child: Center(
                 child: ElevatedButton.icon(
-                  onPressed:() {},
+                  onPressed:() {
+                    Navigator.pushNamed(context, "/BookingASeat/1",arguments:{'title': "Step one of Booking A Seat"});
+                  },
                   icon: Icon(Icons.book_outlined),
                   label: Text("Booking a seat!"),
                 ),
