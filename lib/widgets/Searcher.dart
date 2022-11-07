@@ -23,7 +23,7 @@ class _MySearchState extends State<MySearch> {
           Border.all(color: Color(0xFFF0F0F0), width: 1, style: BorderStyle.solid),
         activeBorder:
           Border.all(color: Color(0xFF0984F9), width: 1, style: BorderStyle.solid),
-        autoFocus: true,
+        autoFocus: false,
         action: Container(),
         onActionTap: () {
           BrnToast.show('取消', context);
