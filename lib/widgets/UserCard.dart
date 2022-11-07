@@ -31,7 +31,7 @@ class _MyUserCardState extends State<MyUserCard> {
               height: 80,
               child: CircleAvatar(
                 radius: 80,
-                backgroundImage: NetworkImage(userAvatarUrl),
+                backgroundImage: AssetImage("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/350x150.png"),
                 backgroundColor: Colors.white,
               ),
             ),

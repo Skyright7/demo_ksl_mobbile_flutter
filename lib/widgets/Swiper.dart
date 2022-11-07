@@ -13,7 +13,7 @@ class _MySwiperState extends State<MySwiper> {
   Widget build(BuildContext context) {
     return Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return Image.network("https://via.placeholder.com/350x150",fit: BoxFit.fill,);
+          return Image.asset("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/350x150.png");
         },
         itemCount: 10,
         itemWidth: 300.0,

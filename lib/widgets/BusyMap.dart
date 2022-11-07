@@ -25,6 +25,9 @@ class MyBusyMap extends StatelessWidget {
             selectedItem: dataList[0],
             showTitleWhenSelected: true,
           ),
+          Container(
+            child: Center(child: Text("The total is $percentage % busy."),),
+          ),
         ],
       ),
     );

@@ -15,7 +15,7 @@ class _MyEventInfoCardState extends State<MyEventInfoCard> {
         child: Row(
           children: [
             Container(
-              child: Image.network("https://via.placeholder.com/350x150",fit: BoxFit.fill,width: 80,
+              child: Image.asset("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/350x150.png",fit: BoxFit.fill,width: 80,
                 height: 80,),
             ),
             Expanded(
