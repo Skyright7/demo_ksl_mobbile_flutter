@@ -4,6 +4,8 @@ import 'package:demo_ksl_mobbile/widgets/NavBar.dart';
 import 'package:demo_ksl_mobbile/widgets/Searcher.dart';
 import 'package:demo_ksl_mobbile/widgets/Swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title, required this.myNavIndex});
@@ -17,6 +19,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  List<dynamic> _eventIdList = [];
+  @override
+  void initState() {
+    super.initState();
+    this._getData();
+  }
+  void _getData() async{
+    try {
+      Response response = await Dio().get('http://localhost:8080/event/list');
+      this.setState(() {
+        Map<String,dynamic> data = json.decode(response.toString());
+        this._eventIdList = data["data"];
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   final String title;
   final int myNavIndex;
@@ -57,10 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: SizedBox(
                   height: 400,
                   child: ListView.builder(
-                      itemCount: 10,
-                      prototypeItem: MyEventInfoCard(),
+                      itemCount: _eventIdList.length,
+                      //prototypeItem: MyEventInfoCard(),
                       itemBuilder: (context, index){
-                        return MyEventInfoCard();
+                        final int id = _eventIdList[index];
+                        return MyEventInfoCard(eventId: id,);
                       },
                   ),
                 ),

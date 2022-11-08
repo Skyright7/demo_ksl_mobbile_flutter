@@ -33,7 +33,7 @@ class _MyUserInfoPageState extends State<MyUserInfoPage> {
         children: <Widget>[
           Container(
             height: 100,
-            child: MyUserCard(),
+            child: MyUserCard(userId: 1,),
           ),
           Expanded(
               child: Container(

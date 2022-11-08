@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:bruno/bruno.dart';
 import 'package:dio/dio.dart';
@@ -18,7 +16,7 @@ class _MyBusyMapState extends State<MyBusyMap> {
 
   Map<String,dynamic> _map = {};
 
-  double _percentage = 10;
+  double _percentage = 0;
 
   @override
   void initState() {
@@ -32,8 +30,7 @@ class _MyBusyMapState extends State<MyBusyMap> {
       this.setState(() {
         Map<String,dynamic> data = json.decode(response.toString());
         this._map = data["data"];
-        int per = this._map["busyStatment"];
-        print(per);
+        int per = this._map["busyStatement"];
         this._percentage = per.toDouble();
       });
     } catch (e) {
@@ -60,17 +57,6 @@ class _MyBusyMapState extends State<MyBusyMap> {
           Container(
             child: Center(child: Text("The total is $_percentage % busy."),),
           ),
-          // Container(
-          //   child: Center(
-          //     child: ElevatedButton.icon(
-          //       onPressed:() {
-          //         getBusyState();
-          //       },
-          //       icon: Icon(Icons.read_more),
-          //       label: Text("Request! Now!"),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

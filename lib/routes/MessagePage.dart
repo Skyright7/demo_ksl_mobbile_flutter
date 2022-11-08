@@ -1,7 +1,9 @@
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:demo_ksl_mobbile/widgets/MessageCard.dart';
 import 'package:demo_ksl_mobbile/widgets/NavBar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 class MyMessagePage extends StatefulWidget {
   const MyMessagePage({Key? key, required this.title, required this.myNavIndex}) : super(key: key);
@@ -16,6 +18,27 @@ class MyMessagePage extends StatefulWidget {
 
 class _MyMessagePageState extends State<MyMessagePage> {
 
+  List<dynamic> _messageIdList = [];
+  @override
+  void initState() {
+    super.initState();
+    this._getData();
+  }
+  void _getData() async{
+    try {
+      Response response = await Dio().get('http://localhost:8080/message/list/1');
+      this.setState(() {
+        Map<String,dynamic> data = json.decode(response.toString());
+        this._messageIdList = data["data"];
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  //假设我们的是用户一号：id = 1;
+  final int userId = 1;
+
   final String title;
   final int myNavIndex;
 
@@ -28,10 +51,11 @@ class _MyMessagePageState extends State<MyMessagePage> {
         title: title,
       ),
       body: ListView.builder(
-          itemCount: 10,
-          prototypeItem: MyMessageCard(),
+          itemCount: _messageIdList.length,
+          //prototypeItem: MyMessageCard(),
           itemBuilder: (context, index){
-            return MyMessageCard();
+            final int id = _messageIdList[index];
+            return MyMessageCard(messageId: id,);
           },
       ),
       bottomNavigationBar: MyNavBar(myNavIndex: myNavIndex,),

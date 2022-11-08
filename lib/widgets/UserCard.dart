@@ -1,24 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:bruno/bruno.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
 
 class MyUserCard extends StatefulWidget {
-  const MyUserCard({Key? key}) : super(key: key);
+  const MyUserCard({Key? key, required this.userId}) : super(key: key);
 
-  //假设拆好包了
+  final int userId;
 
   @override
-  State<MyUserCard> createState() => _MyUserCardState();
+  State<MyUserCard> createState() => _MyUserCardState(userId);
 }
 
 class _MyUserCardState extends State<MyUserCard> {
 
-  String userName = "Rain";
+  String _userName = "";
 
-  String userAvatarUrl = "https://via.placeholder.com/350x150";
+  String _userPreferredName = "";
 
-  String userTitle = "Win le";
+  String _userMajor = "";
 
-  String userShortInfo = "Graduate degree CS student";
+  int _userGraduationYear = 2000;
+
+  int _userAvatar = 1;
+
+  String _userTitle = "";
+
+
+  Map<String,dynamic> _datamap = {};
+
+  final int userId;
+
+  _MyUserCardState(this.userId);
+
+  @override
+  void initState() {
+    super.initState();
+    this._getData();
+  }
+
+  void _getData() async{
+    try {
+      Response response = await Dio().get('http://localhost:8080/user/$userId');
+      this.setState(() {
+        Map<String,dynamic> data = json.decode(response.toString());
+        this._datamap = data["data"];
+        this._userName = this._datamap["userName"];
+        this._userPreferredName = this._datamap["userPreferredName"];
+        this._userMajor = this._datamap["userMajor"];
+        this._userGraduationYear = this._datamap["userGraduationYear"];
+        this._userAvatar = this._datamap["userAvatar"];
+        this._userTitle = this._datamap["userTitle"];
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +67,7 @@ class _MyUserCardState extends State<MyUserCard> {
               height: 80,
               child: CircleAvatar(
                 radius: 80,
-                backgroundImage: AssetImage("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/350x150.png"),
+                backgroundImage: AssetImage("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/avatar/$_userAvatar.jpeg"),
                 backgroundColor: Colors.white,
               ),
             ),
@@ -39,9 +75,10 @@ class _MyUserCardState extends State<MyUserCard> {
                 child: Container(
                   child: Column(
                     children: [
-                      Expanded(child: Text(userName,style: TextStyle(fontSize: 25),),),
-                      Text(userShortInfo),
-                      Text(userTitle),
+                      Expanded(child: Text(_userName,style: TextStyle(fontSize: 25),),),
+                      Text("Prefer Name:"+_userPreferredName),
+                      Text("$_userGraduationYear year,"+_userMajor+" major student"),
+                      Text(_userTitle),
                     ],
                   ),
                 ),
