@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/UserDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
@@ -88,7 +89,19 @@ class _MyUserCardState extends State<MyUserCard> {
                 children: [
                   Expanded(
                       child: Container(
-                        child: Icon(Icons.more),
+                        child: IconButton(
+                          icon: Icon(Icons.more),
+                          onPressed: () {
+                            Navigator.push(context,MaterialPageRoute(
+                              builder: (context) {
+                                return UserDetailPage(
+                                  userId: userId,
+                                );
+                              },
+                            ),
+                            );
+                          },
+                        ),
                       ),
                   ),
                   Container(
