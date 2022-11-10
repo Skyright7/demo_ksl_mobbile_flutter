@@ -2,6 +2,7 @@ import 'package:demo_ksl_mobbile/routes/BookingASeatPage1.dart';
 import 'package:demo_ksl_mobbile/routes/BookingASeatPage2.dart';
 import 'package:demo_ksl_mobbile/routes/BookingASeatPage3.dart';
 import 'package:demo_ksl_mobbile/routes/BusyMapPage.dart';
+import 'package:demo_ksl_mobbile/routes/EventDetailPage.dart';
 import 'package:demo_ksl_mobbile/routes/MessagePage.dart';
 import 'package:demo_ksl_mobbile/routes/ScannerPage.dart';
 import 'package:demo_ksl_mobbile/routes/SuccessPage.dart';

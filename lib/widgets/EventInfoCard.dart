@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/EventDetailPage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -63,7 +64,19 @@ class _MyEventInfoCardState extends State<MyEventInfoCard> {
               ),
             ),
             Container(
-              child: Icon(Icons.open_in_full_outlined),
+              child: IconButton(
+                icon: Icon(Icons.open_in_full_outlined),
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(
+                    builder: (context) {
+                      return EventDetailPage(
+                        eventId: _eventId,
+                      );
+                    },
+                  ),
+                  );
+                },
+              ),
             ),
           ],
         ),
