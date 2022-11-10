@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/MessageDetailPage.dart';
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:demo_ksl_mobbile/widgets/MessageCard.dart';
 import 'package:demo_ksl_mobbile/widgets/NavBar.dart';
@@ -55,7 +56,17 @@ class _MyMessagePageState extends State<MyMessagePage> {
           //prototypeItem: MyMessageCard(),
           itemBuilder: (context, index){
             final int id = _messageIdList[index];
-            return MyMessageCard(messageId: id,);
+            return InkWell(child: MyMessageCard(messageId: id,),
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(
+                builder: (context) {
+                  return MessageDetailPage(
+                    messageId: id,
+                  );
+                },
+              ),
+              );
+            },);
           },
       ),
       bottomNavigationBar: MyNavBar(myNavIndex: myNavIndex,),

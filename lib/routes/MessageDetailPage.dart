@@ -3,28 +3,25 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class EventDetailPage extends StatefulWidget {
-  const EventDetailPage({Key? key, required this.eventId}) : super(key: key);
 
-  final int eventId;
+class MessageDetailPage extends StatefulWidget {
+  const MessageDetailPage({Key? key, required this.messageId}) : super(key: key);
 
+  final int messageId;
 
   @override
-  State<EventDetailPage> createState() => _EventDetailPageState(eventId);
+  State<MessageDetailPage> createState() => _MessageDetailPageState(messageId);
 }
 
-class _EventDetailPageState extends State<EventDetailPage> {
-
-
-
-  final int _eventId;
-
-  _EventDetailPageState(this._eventId);
+class _MessageDetailPageState extends State<MessageDetailPage> {
+  final int _messageId;
+  _MessageDetailPageState(this._messageId);
 
   Map<String,dynamic> _datamap = {};
   String _header = "";
+  String _sender = "";
+  String _sendTime = "";
   String _detail = "";
-  String _holdTime = "";
   @override
   void initState() {
     super.initState();
@@ -32,13 +29,14 @@ class _EventDetailPageState extends State<EventDetailPage> {
   }
   void _getData() async{
     try {
-      Response response = await Dio().get('http://localhost:8080/event/$_eventId');
+      Response response = await Dio().get('http://localhost:8080/message/$_messageId');
       this.setState(() {
         Map<String,dynamic> data = json.decode(response.toString());
         this._datamap = data["data"];
         this._header = this._datamap["header"];
+        this._sender = this._datamap["sender"];
         this._detail = this._datamap["detail"];
-        this._holdTime = this._datamap["holdTime"];
+        this._sendTime = this._datamap["sendTime"];
       });
     } catch (e) {
       print(e);
@@ -55,7 +53,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
             child: Center(child: Text(_header,style: TextStyle(fontSize: 30),),),
           ),
           Container(
-            child: Center(child: Text("Hold time: "+ _holdTime),),
+            child: Center(child: Text("Send time: "+ _sendTime+" From: "+_sender),),
           ),
           Expanded(child: Container(
             child: Text(_detail,style: TextStyle(fontSize: 20),),
