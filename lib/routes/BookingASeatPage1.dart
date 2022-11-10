@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/BookingASeatPage2.dart';
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,14 @@ class _BookingSeatStepOnePageState extends State<BookingSeatStepOnePage> {
 
   final String title;
 
+  Map<String,dynamic> _datamap = {};
+
+  int _arriveTime = 23;
+
+  String _floor = "";
+
+  String _area = "";
+
   _BookingSeatStepOnePageState(this.title);
 
   @override
@@ -28,14 +37,54 @@ class _BookingSeatStepOnePageState extends State<BookingSeatStepOnePage> {
           Expanded(
               child: Column(
                 children: [
-                  Text("here input arrive time"),
-                  Text("Here put the desired floor"),
-                  Text("Here put the desired area"),
+                  TextField(
+                    autofocus: true,
+                    decoration: InputDecoration(
+                        labelText: "Arrive time",
+                        hintText: "Please input your desired arrive time here(9-23)",
+                        prefixIcon: Icon(Icons.timer),
+                    ),
+                    onChanged: (text){
+                      this._arriveTime = int.parse(text);
+                    },
+                  ),
+                  TextField(
+                    autofocus: true,
+                    decoration: InputDecoration(
+                        labelText: "Floor",
+                        hintText: "Please input your desired floor here(f1-f3)(optional)",
+                        prefixIcon: Icon(Icons.short_text_sharp)
+                    ),
+                    onChanged: (text){
+                      this._floor = text;
+                    },
+                  ),
+                  TextField(
+                    autofocus: true,
+                    decoration: InputDecoration(
+                        labelText: "Area",
+                        hintText: "Please input your desired area here(d1-d5)(optional)",
+                        prefixIcon: Icon(Icons.area_chart_outlined)
+                    ),
+                    onChanged: (text){
+                      this._area = text;
+                    },
+                  ),
                   Container(
                     child: Center(
                       child: ElevatedButton.icon(
                         onPressed:() {
-                          Navigator.pushNamed(context, "/BookingASeat/2",arguments:{'title': "Step Two"});
+                          this._datamap["arrivingTime"] = this._arriveTime;
+                          this._datamap["preferredArea"] = this._area;
+                          this._datamap["preferredFloor"] = this._floor;
+                          Navigator.push(context,MaterialPageRoute(
+                              builder: (context) {
+                            return BookingSeatStepTwoPage(
+                              title: "Step 2",
+                              dataMap: _datamap,
+                            );
+                          },
+                          ));
                         },
                         icon: Icon(Icons.add_circle_outline),
                         label: Text("Submit your choice!"),
