@@ -48,6 +48,10 @@ class _BookingSeatStepTwoPageState extends State<BookingSeatStepTwoPage> {
         for(int i = 0; i < this._seatList.length; i++){
           this._seatIndexList.add(i);
         };
+        _selectedSeatType = _seatList[_selectedId]["seatType"];
+        _selectedSeatId = _seatList[_selectedId]["seatId"];
+        _selectedSeatPosition = _seatList[_selectedId]["seatPosition"];
+        _selectedSeatAvailableTime = _seatList[_selectedId]["seatAvailableTime"];
       });
     } catch (e) {
       print(e);
