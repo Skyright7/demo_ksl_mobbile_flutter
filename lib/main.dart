@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
         '/messagePage':(BuildContext context) => MyMessagePage(title: "Message Page", myNavIndex: 3,),
         '/userPage':(BuildContext context) => MyUserInfoPage(title: "User Page", myNavIndex: 4,),
         '/BookingASeat/1':(BuildContext context) => BookingSeatStepOnePage(title: "Step One"),
-        '/BookingASeat/3':(BuildContext context) => BookingSeatStepThreePage(title: "Step Three"),
         '/success':(BuildContext context) => SuccessPage(title: "Booking Suceessful!"),
       },
     );

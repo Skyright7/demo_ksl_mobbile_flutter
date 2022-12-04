@@ -2,19 +2,27 @@ import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:flutter/material.dart';
 
 class BookingSeatStepThreePage extends StatefulWidget {
-  const BookingSeatStepThreePage({Key? key, required this.title}) : super(key: key);
+  const BookingSeatStepThreePage({Key? key, required this.title, required this.seatId, required this.arriveTime}) : super(key: key);
 
   final String title;
 
+  final int seatId;
+
+  final int arriveTime;
+
   @override
-  State<BookingSeatStepThreePage> createState() => _BookingSeatStepThreePageState(title);
+  State<BookingSeatStepThreePage> createState() => _BookingSeatStepThreePageState(title,seatId,arriveTime);
 }
 //记得定制一下appbar，这样可以不加入navbar
 class _BookingSeatStepThreePageState extends State<BookingSeatStepThreePage> {
 
   final String title;
 
-  _BookingSeatStepThreePageState(this.title);
+  final int _seatId;
+
+  final int _arriveTime;
+
+  _BookingSeatStepThreePageState(this.title, this._seatId, this._arriveTime);
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +44,12 @@ class _BookingSeatStepThreePageState extends State<BookingSeatStepThreePage> {
                 ),
                 Container(
                   child: Text("Your seat Type is:  2 type"),
+                ),
+                Container(
+                  child: Text("Arrive time: $_arriveTime"),
+                ),
+                Container(
+                  child: Text("Seat id: $_seatId"),
                 ),
                 Container(
                   child: Text("Below is the image of your seat:"),
