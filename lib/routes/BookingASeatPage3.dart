@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/OrderSuccessPage.dart';
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -147,7 +148,11 @@ class _BookingSeatStepThreePageState extends State<BookingSeatStepThreePage> {
                   child: Center(
                     child: ElevatedButton.icon(
                       onPressed:() {
-                        Navigator.pushNamed(context, "/success",arguments:{'title': "Booking Suceessful!"});
+                        Navigator.push(context,MaterialPageRoute(
+                          builder: (context) {
+                            return OrderSuccessPage(title: "Success", startTime: _arriveTime, endTime: _endTime,seatId: _seatId,);
+                          },
+                        ));
                       },
                       icon: Icon(Icons.add_circle_outline),
                       label: Text("Finish and Submit your choice!"),
