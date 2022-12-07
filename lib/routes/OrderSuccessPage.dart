@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/OrderDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:dio/dio.dart';
@@ -86,10 +87,14 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
             child: Center(
               child: ElevatedButton.icon(
                 onPressed:() {
-                  Navigator.pushNamed(context, "/",arguments:{'title': 'Flutter Demo Home Page',"myNavIndex":0});
+                  Navigator.push(context,MaterialPageRoute(
+                    builder: (context) {
+                      return OrderDetailPage(orderId: _orderId);
+                    },
+                  ));
                 },
-                icon: Icon(Icons.home),
-                label: Text("Check Your order detail(not done)"),
+                icon: Icon(Icons.dehaze_outlined),
+                label: Text("Check Your order detail"),
               ),
             ),
           ),
