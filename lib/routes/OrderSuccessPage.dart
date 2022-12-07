@@ -68,14 +68,11 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
           SizedBox(
             width: 300,
             height: 300,
-            child: Container(
-              color: Colors.green,
-              child: Center(
-                child: Container(
-                  child: Text("Congraduations! Your order is Success!",style: TextStyle(fontSize: 26)),
-                ),
+            child: Center(
+              child: Container(
+                child: Image.asset("/Users/gengyuliu/StudioProjects/demo_ksl_mobbile/lib/assets/image/imgTool/success.jpg"),
               ),
-            ),
+            )
           ),
           Container(
             child: Text("Your Order Number:",style: TextStyle(fontSize: 26)),

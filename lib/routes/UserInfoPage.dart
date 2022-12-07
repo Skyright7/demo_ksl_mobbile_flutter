@@ -1,3 +1,4 @@
+import 'package:demo_ksl_mobbile/routes/OrderListPage.dart';
 import 'package:demo_ksl_mobbile/widgets/AppBar.dart';
 import 'package:demo_ksl_mobbile/widgets/NavBar.dart';
 import 'package:demo_ksl_mobbile/widgets/UserCard.dart';
@@ -34,6 +35,21 @@ class _MyUserInfoPageState extends State<MyUserInfoPage> {
           Container(
             height: 100,
             child: MyUserCard(userId: 1,),
+          ),
+          Container(
+            child: Center(
+              child: ElevatedButton.icon(
+                onPressed:() {
+                  Navigator.push(context,MaterialPageRoute(
+                    builder: (context) {
+                      return OrderListPage(title: "Order list");
+                    },
+                  ));
+                },
+                icon: Icon(Icons.dehaze_outlined),
+                label: Text("Check Your order detail"),
+              ),
+            ),
           ),
           Expanded(
               child: Container(
